@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <!-- Page title -->
+    <title>Welcome to interactive log quality checking!</title>
+</head>
+<body>
+
+
+
+<!-- Content inside Bootstrap class container -->
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>QC Stats Summary</h1>
+            <ul>
+                {% for well in wells %}
+                <li>{{ well }}:
+                    <p>Number of files in directory: {{ count_number_of_files('../../EAGE2018/Well-' + well + '_finished/') }}</p>
+                    <p>Number of LAS files in directory: {{ count_number_of_particular_files('../../EAGE2018/Well-' + well + '_finished/', 'las') }}</p>
+                    <p>Number of PDF files in directory: {{ count_number_of_particular_files('../../EAGE2018/Well-' + well + '_finished/', 'pdf') }}</p>
+                    <p>Number of TXT files in directory: {{ count_number_of_particular_files('../../EAGE2018/Well-' + well + '_finished/', 'txt') }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div> <!-- /.container -->
+
+
+</body>
+</html>
