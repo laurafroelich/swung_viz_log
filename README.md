@@ -24,7 +24,7 @@ from the folder swung_viz_log.
 
 If you have conda installed (you can check with ´conda --python´), you can create the environment with the required files with
 
-´conda env create -f viz_log_env.yml´.
+´conda env create -f conda_viz_log_env.yml´.
 
 Then activate the environment with
 
