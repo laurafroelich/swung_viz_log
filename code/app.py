@@ -15,16 +15,12 @@ def index():
 def bootstrap():
     return render_template('minimal_bootstrap.html')
 
-@app.route('qc_stats')
+@app.route('/qc_stats')
 def qc_stats():
     return render_template('minimal_bootstrap.html')
 
 @app.route('/bokeh')
 def bokeh():
-
-
-
-
     input_file = "../../EAGE2018/Well-A_finished/HQLD_B_2C1_75-1_Well-A_ISF-BHC-MSFL-GR__COMPOSIT__1.LAS"
     las = read_data.read(input_file)
     df = las.df()
