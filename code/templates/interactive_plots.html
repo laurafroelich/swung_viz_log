@@ -10,6 +10,17 @@
 
     <!-- Page title -->
     <title>Hello, world!</title>
+
+    <link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.css"
+    rel="stylesheet" type="text/css">
+<link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.css"
+    rel="stylesheet" type="text/css">
+
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.js"></script>
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.js"></script>
+
 </head>
 <body>
 
@@ -18,7 +29,7 @@
     <div class="row">
         <div class="col-6">
             <h1>{{mytext}}</h1>
-            <img src="static/testimg.png" style="width:50%"/>
+            <img src="static/output.png" style="width:50%"/>
             <p>This is some text</p>
         </div>
     </div>
@@ -29,7 +40,7 @@
     <div class="row">
         <div class="col-6">
             <h1>{{mytext}}</h1>
-            <img src="data:image/png;{{ myimage }}" style="width:50%"/>
+            <img src="./{{ myimage }}" style="width:50%"/>
             <p>This is some text</p>
         </div>
     </div>
@@ -42,13 +53,43 @@
         <div class="col-6">
             <h1>{{mytext}}</h1>
             {% if myimage != None %}
-            <img src="data:image/png;base64,{{ myimage }}" width="500">
+	    <img src="static/{{ myimage }}" width="500">
             {% endif %}
             <p>This is some text</p>
         </div>
     </div>
-</div> <!-- /.container -->
 
+<select class="form-control" id="rating" name="rating" onchange="this.form.submit()">
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3" selected>3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+</select>
+
+<form action="./handle_data" method="post">
+	     <p>Name <input type = "text" name = "Name" /></p>
+         <p>Physics <input type = "text" name = "Physics" /></p>
+         <p>Chemistry <input type = "text" name = "chemistry" /></p>
+         <p>Maths <input type ="text" name = "Mathematics" /></p>
+         <p><input type = "submit" value = "submit" /></p>
+      </form>
+
+      <form action="interactive_plots">
+<select name="feature_name">
+	{% for feature in feature_names %}
+		{% if feature == current_feature_name %}
+			<option selected value="{{ feature }}">{{ feature }}</option>
+		{% else %}
+			<option value="{{ feature }}">{{ feature }}</option>
+		{% endif %}
+	{% endfor %}
+</select>
+<input type="submit">
+</form>
+
+
+</div> <!-- /.container -->
 
 <!-- Load JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
