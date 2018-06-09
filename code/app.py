@@ -17,7 +17,15 @@ def bootstrap():
 
 @app.route('/bokeh')
 def bokeh():
-    script, div, js_resources, css_resources = plotting.plot_bokeh()
+
+
+
+
+    input_file = "../../EAGE2018/Well-A_finished/HQLD_B_2C1_75-1_Well-A_ISF-BHC-MSFL-GR__COMPOSIT__1.LAS"
+    las = read_data.read(input_file)
+    df = las.df()
+    keys = las.keys()
+    script, div, js_resources, css_resources = plotting.plot_bokeh(df, keys[1], keys[2])
     return render_template('bokeh_index.html',
                            plot_script=script,
                            plot_div=div,

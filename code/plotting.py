@@ -35,7 +35,23 @@ def plot_two_columns(df, column1, column2):
     return figdata_png
 
 
-def plot_bokeh():
+def plot_bokeh(df, column1, column2):
+    fig = figure(title="Scatter Plot")
+    fig.circle(df[column1], df[column2])
+    fig.xaxis.axis_label = column1
+    fig.yaxis.axis_label = column2
+
+    # grab the static resources
+    js_resources = INLINE.render_js()
+    css_resources = INLINE.render_css()
+
+    # render template
+    script, div = components(fig)
+
+    return script, div, js_resources, css_resources
+
+
+def plot_bokeh_simulated_data():
 
     # chart defaults
     color = '#FF0000'
