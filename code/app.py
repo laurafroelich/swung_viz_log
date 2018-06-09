@@ -15,6 +15,15 @@ def index():
 def bootstrap():
     return render_template('minimal_bootstrap.html')
 
+@app.route('/bokeh')
+def bokeh():
+    script, div, js_resources, css_resources = plotting.plot_bokeh()
+    return render_template('bokeh_index.html',
+                           plot_script=script,
+                           plot_div=div,
+                           js_resources=js_resources,
+                           css_resources=css_resources )
+
 
 @app.route('/interactive_plots')
 def interactive_plots():
