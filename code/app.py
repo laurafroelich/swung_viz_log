@@ -7,7 +7,7 @@ import bokeh
 hv.extension('bokeh')
 import calculate_qc_stats
 
-WELLS = ['A', 'AA', 'B_AT2', 'B_A', 'B', 'D', 'LA', 'X27']
+WELLS = ['A', 'AA', 'B_AT2', 'B_A', 'B', 'D', 'I_A', 'X-27']
 
 # Landing page
 @app.route('/index.html')
