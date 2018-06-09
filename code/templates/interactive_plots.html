@@ -17,13 +17,37 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h1>Hello</h1>
-            <img src="/static/myfig.png" style="width:50%"/>
+            <h1>{{mytext}}</h1>
+            <img src="static/testimg.png" style="width:50%"/>
             <p>This is some text</p>
         </div>
     </div>
 </div> <!-- /.container -->
 
+<!-- Content inside Bootstrap class container -->
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>{{mytext}}</h1>
+            <img src="data:image/png;{{ myimage }}" style="width:50%"/>
+            <p>This is some text</p>
+        </div>
+    </div>
+</div> <!-- /.container -->
+
+
+<!-- Content inside Bootstrap class container -->
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>{{mytext}}</h1>
+            {% if myimage != None %}
+            <img src="data:image/png;base64,{{ myimage }}" width="500">
+            {% endif %}
+            <p>This is some text</p>
+        </div>
+    </div>
+</div> <!-- /.container -->
 
 
 <!-- Load JavaScript -->
