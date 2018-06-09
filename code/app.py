@@ -2,6 +2,9 @@ from flask import Flask, render_template
 app = Flask(__name__)
 import read_data
 import plotting
+import calculate_qc_stats
+
+WELLS = ['A', 'AA', 'B_ATZ', 'B_A', 'B', 'D', 'LA', 'XZ7']
 
 # Landing page
 @app.route('/index.html')
@@ -17,7 +20,14 @@ def bootstrap():
 
 @app.route('/qc_stats')
 def qc_stats():
-    return render_template('minimal_bootstrap.html')
+    n_files = calculate_qc_stats.count_number_of_files('../../EAGE2018')
+    n_las_files = calculate_qc_stats.count_number_of_particular_files('../../EAGE2018', 'las')
+    n_pdf_files = calculate_qc_stats.count_number_of_particular_files('../../EAGE2018', 'pdf')
+    n_txt_files = calculate_qc_stats.count_number_of_particular_files('../../EAGE2018', 'txt')
+    return render_template('qc_stats.html', n_files = n_files, n_las_files=n_las_files, n_pdf_files=n_pdf_files,
+                           n_txt_files=n_txt_files, wells = WELLS,
+                           count_number_of_files=calculate_qc_stats.count_number_of_files,
+                           count_number_of_particular_files=calculate_qc_stats.count_number_of_particular_files)
 
 @app.route('/bokeh')
 def bokeh():
