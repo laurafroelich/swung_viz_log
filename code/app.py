@@ -15,6 +15,10 @@ def index():
 def bootstrap():
     return render_template('minimal_bootstrap.html')
 
+@app.route('qc_stats')
+def qc_stats():
+    return render_template('minimal_bootstrap.html')
+
 @app.route('/bokeh')
 def bokeh():
 
