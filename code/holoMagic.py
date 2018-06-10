@@ -105,22 +105,26 @@ def update_plot(attrname, old, new):
     #group_select = Select(value=curve, title='Group', options= list(group_df['name'].unique()))
 
 
+    if group!='All':
 
+         base_top = group_df[group_df['name'] == group]
 
-    base_top = group_df[group_df['name'] == group]
-
-    top = base_top[base_top['Obs#']=='Top'].values
-    base = base_top[base_top['Obs#']=='Base'].values
-
-    if len(top)>0:
-        top = base_top[base_top['Obs#']=='Top']['MD'].values[0]
-    else:
-        top=0
-
-    if len(base)>0:
-        base = base_top[base_top['Obs#']=='Base']['MD'].values[0]
+         top = base_top[base_top['Obs#']=='Top'].values
+         base = base_top[base_top['Obs#']=='Base'].values
+         
+         if len(top)>0:
+             top = base_top[base_top['Obs#']=='Top']['MD'].values[0]
+         else:
+            top=0
+            
+         if len(base)>0:
+            base = base_top[base_top['Obs#']=='Base']['MD'].values[0]
+         else:
+            base=5000
     else:
         base=5000
+        top=0
+
 
 
 
@@ -161,7 +165,7 @@ df1 = (p_data[p_data['Well'] == 'A']).copy()
 group_file = "{}EAGE_Hackathon_2018_{}".format(DATA_PATH, "Well_I_A.csv")
 group_df = pd.read_csv(group_file)
 group_df = group_df[group_df['Surface']=='group']
-group_select = Select(value='AA', title='Group', options= list(group_df['name'].unique()))
+group_select = Select(value='AA', title='Group', options= list(group_df['name'].unique())+['All'])
 
 
 curve = 'Gamma'
