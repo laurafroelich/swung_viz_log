@@ -28,73 +28,22 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h1>{{mytext}}</h1>
+            <h1>Plots</h1>
+            <a href = "/">Home</a>
+        </div>
+    </div>
+</div> <!-- /.container -->
+
+<!-- Content inside Bootstrap class container -->
+<div class="container">
+    <div class="row">
+        <div class="col-6">
             <img src="static/output.png" style="width:50%"/>
             <p>This is some text</p>
         </div>
     </div>
 </div> <!-- /.container -->
 
-<!-- Content inside Bootstrap class container -->
-<div class="container">
-    <div class="row">
-        <div class="col-6">
-            <h1>{{mytext}}</h1>
-            <img src="./{{ myimage }}" style="width:50%"/>
-            <p>This is some text</p>
-        </div>
-    </div>
-</div> <!-- /.container -->
 
-
-<!-- Content inside Bootstrap class container -->
-<div class="container">
-    <div class="row">
-        <div class="col-6">
-            <h1>{{mytext}}</h1>
-            {% if myimage != None %}
-	    <img src="static/{{ myimage }}" width="500">
-            {% endif %}
-            <p>This is some text</p>
-        </div>
-    </div>
-
-<select class="form-control" id="rating" name="rating" onchange="this.form.submit()">
-    <option value="5">5</option>
-    <option value="4">4</option>
-    <option value="3" selected>3</option>
-    <option value="2">2</option>
-    <option value="1">1</option>
-</select>
-
-<form action="./handle_data" method="post">
-	     <p>Name <input type = "text" name = "Name" /></p>
-         <p>Physics <input type = "text" name = "Physics" /></p>
-         <p>Chemistry <input type = "text" name = "chemistry" /></p>
-         <p>Maths <input type ="text" name = "Mathematics" /></p>
-         <p><input type = "submit" value = "submit" /></p>
-      </form>
-
-      <form action="interactive_plots">
-<select name="feature_name">
-	{% for feature in feature_names %}
-		{% if feature == current_feature_name %}
-			<option selected value="{{ feature }}">{{ feature }}</option>
-		{% else %}
-			<option value="{{ feature }}">{{ feature }}</option>
-		{% endif %}
-	{% endfor %}
-</select>
-<input type="submit">
-</form>
-
-
-</div> <!-- /.container -->
-
-<!-- Load JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
