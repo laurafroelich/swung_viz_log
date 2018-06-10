@@ -22,11 +22,19 @@ To install the required packages, run
 
 from the folder swung_viz_log.
 
-If you have conda installed (you can check with ´conda --python´), you can create the environment with the required files with
 
-´conda env create -f conda_viz_log_env.yml´.
+# Running on AWS
+To serve this app from AWS, do the following:
 
-Then activate the environment with
+1. Log in to you EC2 instance
+2. Make sure the code is there (use git clone as described above)
+3. Make sure data is there in the structure expected by the code (relative to code, data should be in ../data/EAGE2018/ in appropriate folders)
+4. From the code directory, execute
+´python app.py´
+5. From the code directory, execute
+´bokeh serve bokeh serve holoMagic.py --allow-websocket-origin=ec2-18-222-85-3.us-east-2.compute.amazonaws.com:5006´
+6. In a browser, open the appropriate AWS url (e.g. http://ec2-18-222-85-3.us-east-2.compute.amazonaws.com:5000/)
 
-´source activate viz_log_env´.
+
+
 
