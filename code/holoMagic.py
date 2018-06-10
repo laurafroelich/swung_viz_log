@@ -96,22 +96,21 @@ def update_plot(attrname, old, new):
     plot.title.text = curve
     plot.xaxis.axis_label = curve
 
-    print('reloading ds')
     
     src1, src2 = [get_dataset(df[['Depth',curve]]) for df in [df1,df2]]
-    print('ds updated')
 
     source1.data.update(src1.data)
     source2.data.update(src2.data)
 
-    update_text(src1['val'].max(), src1['val'].min(), src1['val'].mean(), src1['val'].std())
+    small_df = df1[new]
+    
+    update_text(small_df.max(), small_df.min(), small_df.mean(), small_df.std())
 
-def update_text(maxs, mins, mean, std):
-    a=5
-    #maxs.text = "Max {}".format(maxs)
-    #mins.text = "Min {}".format(mins)
-    #mean.text = "Mean {}".format(mean)
-    #std.text = "Std {}".format(std)
+def update_text(maxVal, minVal, meanVal, stdVal):
+    maxs.text = "Max {0:.2f}".format(maxVal)
+    mins.text = "Min {0:.2f}".format(minVal)
+    mean.text = "Mean {0:.2f}".format(meanVal)
+    std.text = "Std {0:.2f}".format(stdVal)
 
 
 
@@ -119,7 +118,6 @@ def update_text(maxs, mins, mean, std):
 #df1,df2 = [lasio.read(fname).df() for fname in [file1, file2]]
 #df1.index = -df1.index
 #df2.index = -df2.index
-print(df1.columns)
 
 curve = 'Gamma'
 curve_select = Select(value=curve, title='Curve', options= ['Gamma', 'Res'])
@@ -127,7 +125,6 @@ curve_select = Select(value=curve, title='Curve', options= ['Gamma', 'Res'])
 
 #df = pd.read_csv(join(dirname(__file__), 'data/2015_weather.csv'))
 source1, source2 = [get_dataset(df[['Depth','Gamma']]) for df in [df1,df2]]
-print('dataset DONE')
 plot = make_plot(source1, source2, curve)
 
 ##
