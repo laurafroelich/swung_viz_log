@@ -6,6 +6,7 @@ import holoviews as hv
 import bokeh
 hv.extension('bokeh')
 import calculate_qc_stats
+import os
 
 WELLS = ['A', 'AA', 'B_AT2', 'B_A', 'B', 'D', 'I_A', 'X-27']
 DATA_DIR = '../data/'
@@ -81,4 +82,6 @@ def handle_data():
     return 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(
+        host=os.getenv('LISTEN', '0.0.0.0'),
+        port=int(os.getenv('PORT', '8080')))
