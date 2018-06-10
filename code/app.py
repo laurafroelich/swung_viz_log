@@ -8,6 +8,7 @@ hv.extension('bokeh')
 import calculate_qc_stats
 
 WELLS = ['A', 'AA', 'B_AT2', 'B_A', 'B', 'D', 'I_A', 'X-27']
+DATA_DIR = '../data/'
 
 # Landing page
 @app.route('/index.html')
@@ -25,11 +26,12 @@ def bootstrap():
 def qc_stats():
     return render_template('qc_stats.html', wells = WELLS,
                            count_number_of_files=calculate_qc_stats.count_number_of_files,
-                           count_number_of_particular_files=calculate_qc_stats.count_number_of_particular_files)
+                           count_number_of_particular_files=calculate_qc_stats.count_number_of_particular_files,
+                           data_dir = DATA_DIR)
 
 @app.route('/bokeh')
 def bokeh():
-    input_file = "../data/EAGE2018/Well-A_finished/HQLD_B_2C1_75-1_Well-A_ISF-BHC-MSFL-GR__COMPOSIT__1.LAS"
+    input_file = DATA_DIR + "EAGE2018/Well-A_finished/HQLD_B_2C1_75-1_Well-A_ISF-BHC-MSFL-GR__COMPOSIT__1.LAS"
     las = read_data.read(input_file)
     df = las.df()
     keys = las.keys()
@@ -48,7 +50,7 @@ def interactive_plots():
     if current_feature_name == None:
         current_feature_name = "GR"
 
-    input_file = "../data/EAGE2018/Well-A_finished/HQLD_B_2C1_75-1_Well-A_ISF-BHC-MSFL-GR__COMPOSIT__1.LAS"
+    input_file = DATA_DIR + "EAGE2018/Well-A_finished/HQLD_B_2C1_75-1_Well-A_ISF-BHC-MSFL-GR__COMPOSIT__1.LAS"
     result = read_data.read(input_file).df()
     result_small = result[current_feature_name]
     print(result_small.name)
