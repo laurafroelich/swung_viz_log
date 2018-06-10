@@ -122,7 +122,7 @@ def update_text(maxs, mins, mean, std):
 print(df1.columns)
 
 curve = 'Gamma'
-curve_select = Select(value=curve, title='Curve', options=list(df2.columns.values))
+curve_select = Select(value=curve, title='Curve', options= ['Gamma', 'Res'])
 
 
 #df = pd.read_csv(join(dirname(__file__), 'data/2015_weather.csv'))
