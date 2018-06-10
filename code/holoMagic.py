@@ -26,7 +26,7 @@ for i, item in enumerate(j_data):
     if i == 0:
         p_data = pd.DataFrame(item)
     else:
-        p_data = p_data.append(pd.DataFrame(item), sort=True)        
+        p_data = p_data.append(pd.DataFrame(item))
 
 df1 = (p_data[p_data['File_Name'] == 'GR_RES_Well-X-27.las']).copy()
 df2 = (p_data[p_data['File_Name'] == 'GR_RES_Well-I_A.LAS']).copy()
@@ -145,4 +145,4 @@ curve_select.on_change('value', update_plot)
 controls = column(curve_select, maxs, mins, mean, std)#, distribution_select)
 
 curdoc().add_root(row(plot, controls))
-curdoc().title = "Weather"
+curdoc().title = "Log quality visualisation"
