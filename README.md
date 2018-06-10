@@ -32,7 +32,7 @@ To serve this app from AWS, do the following:
 4. From the code directory, execute
 ´python app.py´
 5. From the code directory, execute
-´bokeh serve bokeh serve holoMagic.py --allow-websocket-origin=ec2-18-222-85-3.us-east-2.compute.amazonaws.com:5006´
+´bokeh serve holoMagic.py --allow-websocket-origin=ec2-18-222-85-3.us-east-2.compute.amazonaws.com:5006´
 6. In a browser, open the appropriate AWS url (e.g. http://ec2-18-222-85-3.us-east-2.compute.amazonaws.com:5000/)
 
 
