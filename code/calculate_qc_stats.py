@@ -13,7 +13,7 @@ def count_number_of_particular_files(directory, extension):
     count = 0
     for dirpath, dirnames, filenames in os.walk(directory):
         for filename in filenames:
-            if filename.split('.')[-1] == extension:
+            if filename.split('.')[-1].lower() == extension:
                 count = count+1
 
     return count
