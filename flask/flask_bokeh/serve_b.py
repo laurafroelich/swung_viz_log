@@ -21,6 +21,7 @@ stream = hv.streams.Stream.define('Phase', phase=0.)()
 dmap = hv.DynamicMap(sine, streams=[stream])
 
 input_file = "../../data/EAGE2018/Well-A_finished/HQLD_B_2C1_75-1_Well-A_ISF-BHC-MSFL-GR__COMPOSIT__1.LAS"
+input_file = "../../data/EAGE2018/Well-AA_finished/HQLD_B_2C1_85-1_BHC-GR_COMPOSITED_1.LAS"
 result = lasio.read(input_file).df()
 result_small = result['GR']
 
