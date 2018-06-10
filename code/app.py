@@ -23,17 +23,13 @@ def bootstrap():
 
 @app.route('/qc_stats')
 def qc_stats():
-    n_files = calculate_qc_stats.count_number_of_files('../../EAGE2018')
-    n_las_files = calculate_qc_stats.count_number_of_particular_files('../../EAGE2018', 'las')
-    n_pdf_files = calculate_qc_stats.count_number_of_particular_files('../../EAGE2018', 'pdf')
-    n_txt_files = calculate_qc_stats.count_number_of_particular_files('../../EAGE2018', 'txt')
     return render_template('qc_stats.html', wells = WELLS,
                            count_number_of_files=calculate_qc_stats.count_number_of_files,
                            count_number_of_particular_files=calculate_qc_stats.count_number_of_particular_files)
 
 @app.route('/bokeh')
 def bokeh():
-    input_file = "../../EAGE2018/Well-A_finished/HQLD_B_2C1_75-1_Well-A_ISF-BHC-MSFL-GR__COMPOSIT__1.LAS"
+    input_file = "../data/EAGE2018/Well-A_finished/HQLD_B_2C1_75-1_Well-A_ISF-BHC-MSFL-GR__COMPOSIT__1.LAS"
     las = read_data.read(input_file)
     df = las.df()
     keys = las.keys()
@@ -47,8 +43,6 @@ def bokeh():
 
 @app.route('/interactive_plots', methods = ['GET', 'POST'])
 def interactive_plots():
-
-    print('a')
 
     current_feature_name = request.args.get("feature_name")
     if current_feature_name == None:

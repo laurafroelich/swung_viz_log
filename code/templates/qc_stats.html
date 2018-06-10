@@ -23,10 +23,10 @@
             <ul>
                 {% for well in wells %}
                 <li>{{ well }}:
-                    <p>Number of files in directory: {{ count_number_of_files('../../EAGE2018/Well-' + well + '_finished/') }}</p>
-                    <p>Number of LAS files in directory: {{ count_number_of_particular_files('../../EAGE2018/Well-' + well + '_finished/', 'las') }}</p>
-                    <p>Number of PDF files in directory: {{ count_number_of_particular_files('../../EAGE2018/Well-' + well + '_finished/', 'pdf') }}</p>
-                    <p>Number of TXT files in directory: {{ count_number_of_particular_files('../../EAGE2018/Well-' + well + '_finished/', 'txt') }}</p>
+                    <p>Number of files in directory: {{ count_number_of_files('../data/EAGE2018/Well-' + well + '_finished/') }}</p>
+                    <p>Number of LAS files in directory: {{ count_number_of_particular_files('../data/EAGE2018/Well-' + well + '_finished/', 'las') }}</p>
+                    <p>Number of PDF files in directory: {{ count_number_of_particular_files('../data/EAGE2018/Well-' + well + '_finished/', 'pdf') }}</p>
+                    <p>Number of TXT files in directory: {{ count_number_of_particular_files('../data/EAGE2018/Well-' + well + '_finished/', 'txt') }}</p>
                 </li>
                 {% endfor %}
             </ul>
