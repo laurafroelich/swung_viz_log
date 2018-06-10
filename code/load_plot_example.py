@@ -42,7 +42,7 @@ def get_las_info(file_list):
     las_file_data = []
     p = re.compile('Well-(.+)_finished')
     # loop through the files
-    for file_name in file_list[:10]:
+    for file_name in file_list:
         # get file name and directory info
         file_head, file_tail = os.path.split(file_name)
         # break file name into parts
@@ -52,7 +52,6 @@ def get_las_info(file_list):
             dir_head, dir_tail = os.path.split(os.path.dirname(file_name))
             # try and load the las file
             try:
-                print(file_name)
                 las = lasio.read(file_name, ignore_data=True)
 
                 # Check to see if the file has:
@@ -65,8 +64,10 @@ def get_las_info(file_list):
                 #   deep res in ohm m
                 #   gamma in api
                 #   sonic dt in us per foot
+                print('File: ', file_tail)
                 for i, curve in enumerate(las.curves):
-                    if ('depth' in curve.mnemonic.lower()) and ('m' in curve.unit.lower()) and (flags[0] == 0):
+                    print("mnem: ", curve.mnemonic.lower(), ", curve: ", curve.unit.lower())
+                    if ('dep' in curve.mnemonic.lower()) and ('m' in curve.unit.lower()) and (flags[0] == 0):
                         flags[0] = 1
                         data_cols[0] = i
 
@@ -79,7 +80,7 @@ def get_las_info(file_list):
                         data_cols[2] = i
 
 
-                print(flags)
+                # print(flags)
 
                 # Check to see if file has all the data we want
                 if all(flags):
@@ -91,7 +92,7 @@ def get_las_info(file_list):
                         temp_data["Gamma"] = las.data[:, data_cols[2]].tolist()
                         temp_data["Well"] = p.findall(dir_tail)[0]
                         temp_data["File_Name"] = file_tail
-                        print(temp_data)
+                        print(p.findall(dir_tail)[0])
                         las_file_data = las_file_data + [temp_data]
 
                     except:
