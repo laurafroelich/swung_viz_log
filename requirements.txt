@@ -26,7 +26,7 @@ python-dateutil==2.7.3
 pytz==2018.4
 pyviz-comms==0.1.1
 PyYAML>=3.12
-rsa==3.4.2
+rsa==4.7
 s3transfer==0.1.10
 six==1.11.0
 tornado==5.0.2
