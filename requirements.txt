@@ -30,4 +30,4 @@ rsa==4.7
 s3transfer==0.1.10
 six==1.11.0
 tornado==5.0.2
-Werkzeug==0.15.5
+Werkzeug==2.2.3
